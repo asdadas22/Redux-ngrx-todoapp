@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { Todo } from './models/todo.model';
-import { borrar, crear, editar, toggle, toggleAllItem } from './todo.actions';
+import { borrar, 
+        borrarTodos, 
+        crear, 
+        editar, 
+        toggle, 
+        toggleAllItem } from './todo.actions';
 
 
 export const estadoInicial:Todo[] = [
@@ -12,6 +17,7 @@ export const estadoInicial:Todo[] = [
 const _todoReducer = createReducer(
     estadoInicial,
     on(crear, (state, {texto}) => [...state, new Todo(texto)]),
+    on(borrarTodos, state => state.filter( todo => !todo.estado)),
     on(toggle, (state, {id}) => {
         // Map crea un nuevo arreglo.
         return state.map( todo => {

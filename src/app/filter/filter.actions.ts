@@ -4,5 +4,5 @@ export type allFilter = 'todos' | 'completados' | 'pendientes';
 
 export const filterItems = createAction(
     '[Filter] Set Filter',
-    props<{ filter: allFilter}>()
+    props<{ allfilter: allFilter}>()
 );
